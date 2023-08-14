@@ -5,7 +5,6 @@ use CoffeeCode\DataLayer\Connect;
 use Source\Models\Agendamento;
 
 $appointment = new Agendamento();
-
 $appointmentsFind = $appointment->find()->fetch(true);
 ?>
 
@@ -35,20 +34,26 @@ $appointmentsFind = $appointment->find()->fetch(true);
                         type="date"
                         name="search"
                         id="data-agendamento">
-                <button
-                    class="rounded-lg bg-purple-700 text-white font-bold p-2 hover:bg-purple-600"
-                >
-                    Buscar agendamentos
+                <button title="Buscar agendamentos">
+                    <img src="./source/assets/icons/search.svg" alt="" class="w-8 h-8">
                 </button>
             </form>
         </div>
         <div class="w-full col-span-2 flex flex-col gap-4">
-            <a
-                    href="./new_appointment.php"
-                    class="rounded-lg bg-transparent border-2 border-purple-300 text-purple-700 font-bold p-2 hover:bg-purple-700 hover:text-white w-fit cursor-pointer"
-            >
-                Novo agendamento
-            </a>
+            <div class="flex items-center gap-4">
+                <a
+                        href="./new_appointment.php"
+                        class="rounded-lg bg-transparent border-2 border-purple-300 text-purple-700 font-bold p-2 hover:bg-purple-700 hover:text-white w-fit cursor-pointer"
+                >
+                    Novo agendamento
+                </a>
+                <a
+                        href="./new-professional.php"
+                        class="rounded-lg bg-transparent border-2 border-purple-300 text-purple-700 font-bold p-2 hover:bg-purple-700 hover:text-white w-fit cursor-pointer"
+                >
+                    Cadastrar profissional
+                </a>
+            </div>
             <div class="overflow-y-auto h-[36rem]">
                 <table class="w-full border-collapse min-w-max text-center mr-4 relative">
                     <thead class="bg-purple-700 text-white">
@@ -70,7 +75,12 @@ $appointmentsFind = $appointment->find()->fetch(true);
                                             <?= $item->nome ?>
                                         </a>
                                     </td>
-                                    <td><?= $item->profissional ?></td>
+                                    <?php
+                                        $q = $conn->query("SELECT p.nome FROM agendamentos 
+                                        INNER JOIN profissionais p WHERE p.id = {$item->id_profissional}");
+                                        $r = $q->fetch();
+                                    ?>
+                                        <td><?= $r->nome ?></td>
                                     <td><?= $item->tipo_agendamento ?></td>
                                     <td><?= $item->status ?></td>
                                 </tr>

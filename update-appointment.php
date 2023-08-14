@@ -48,11 +48,21 @@
             <option value="Falta">Falta</option>
         </select>
 
-        <button
-                class="rounded-lg bg-purple-700 text-white font-bold p-2 hover:bg-purple-600"
-        >
-            Salvar alterações
-        </button>
+        <div class="flex gap-3">
+            <button
+                    class="rounded-lg bg-purple-700 text-white font-bold p-2 hover:bg-purple-600 w-48"
+            >
+                Salvar alterações
+            </button>
+            <a
+                    href="./source/commands/delete-appointment.php?id=<?= $result->id ?>"
+                    class="rounded-lg bg-red-700 text-white font-bold p-2 hover:bg-red-600"
+            >
+                Deletar agendamento
+            </a>
+
+        </div>
+
     </form>
 </div>
 

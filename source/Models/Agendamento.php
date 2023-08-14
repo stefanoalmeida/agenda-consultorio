@@ -10,10 +10,10 @@ class Agendamento extends DataLayer
     {
         parent::__construct("agendamentos",
             [
+                "id_profissional",
                 "nome",
                 "data_agendamento",
                 "horario",
-                "profissional",
                 "tipo_agendamento",
                 "status"
             ]);

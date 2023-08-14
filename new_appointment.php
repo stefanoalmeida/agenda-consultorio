@@ -1,3 +1,12 @@
+<?php
+require_once __DIR__ . "/vendor/autoload.php";
+
+use Source\Models\Profissional;
+
+$professional = new Profissional();
+$professionalFind = $professional->find("status = :st", "st=Ativo")->fetch(true);
+?>
+
 <!doctype html>
 <html lang="pt-BR">
 <head>
@@ -18,9 +27,14 @@
             <input type="text" placeholder="Digite o nome do paciente" name="nome" class="p-2 bg-transparent border-2 border-gray-400 rounded-lg text-gray-500 focus:outline-purple-700">
             <input type="date" name="data_agendamento" class="p-2 bg-transparent border-2 border-gray-400 rounded-lg text-gray-500 focus:outline-purple-700">
             <input type="time" name="horario" class="p-2 bg-transparent border-2 border-gray-400 rounded-lg text-gray-500 focus:outline-purple-700">
-            <input type="text" placeholder="Digite o nome do profissional" name="profissional" class="p-2 bg-transparent border-2 border-gray-400 rounded-lg text-gray-500 focus:outline-purple-700">
+            <select name="id_profissional" id="" class="p-2 bg-transparent border-2 border-gray-400 rounded-lg text-gray-500 focus:outline-purple-700">
+                <option value="" selected>Selecione o profissional</option>
+                <?php foreach ($professionalFind as $prof) :?>
+                    <option value="<?= $prof->id ?>"><?= $prof->nome ?></option>
+                <?php endforeach; ?>
+            </select>
             <select name="tipo_agendamento" id="" class="p-2 bg-transparent border-2 border-gray-400 rounded-lg text-gray-500 focus:outline-purple-700">
-                <option value="" selected>Selecione...</option>
+                <option value="" selected>Selecione o tipo de agendamento</option>
                 <option value="Avaliação">Avaliação</option>
                 <option value="Sessão">Sessão</option>
                 <option value="Reposição">Reposição</option>
@@ -29,7 +43,7 @@
                 <option value="Retorno">Retorno</option>
             </select>
             <select name="status" id="" class="p-2 bg-transparent border-2 border-gray-400 rounded-lg text-gray-500 focus:outline-purple-700">
-                <option value="" selected>Selecione...</option>
+                <option value="" selected>Selecione o status do agendamento</option>
                 <option value="Confirmado">Confirmado</option>
                 <option value="Presença">Presença</option>
                 <option value="Cancelado Profissional">Cancelado Profissional</option>
