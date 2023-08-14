@@ -1,0 +1,23 @@
+{
+  "name": "stefanoalmeida/agenda",
+  "description": "Sistema de agendamento para pequenos consultórios",
+  "minimum-stability": "stable",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "stefanoalmeida",
+      "role": "developer"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Source\\": "source/"
+    },
+    "files": [
+      "source/Config.php"
+    ]
+  },
+  "require": {
+    "coffeecode/datalayer": "1.1.8"
+  }
+}
