@@ -19,7 +19,7 @@ $appointmentsFind = $appointment->find()->fetch(true);
     <script src="https://cdn.tailwindcss.com"></script>
     <title>TS-Agendamentos</title>
 </head>
-<body class="bg-gray-100">
+<body class="bg-gray-100 overflow-hidden ">
     <div class="grid grid-cols-3 items-center justify-center p-4 h-screen">
         <div class="col-span-1">
             <?php
@@ -31,21 +31,21 @@ $appointmentsFind = $appointment->find()->fetch(true);
             ?>
             <form action="" class="flex items-center justify-center gap-4" method="POST">
                 <input
-                        class="bg-transparent text-gray-500 border border-gray-400 rounded-lg p-4 focus:outline-purple-900"
+                        class="bg-transparent text-gray-500 border border-gray-400 rounded-lg p-2 focus:outline-purple-900"
                         type="date"
                         name="search"
                         id="data-agendamento">
                 <button
-                    class="rounded-lg bg-purple-700 text-white font-bold p-4 hover:bg-purple-600"
+                    class="rounded-lg bg-purple-700 text-white font-bold p-2 hover:bg-purple-600"
                 >
                     Buscar agendamentos
                 </button>
             </form>
         </div>
-        <div class="w-[full] col-span-2 flex flex-col gap-4">
+        <div class="w-full col-span-2 flex flex-col gap-4">
             <a
                     href="./new_appointment.php"
-                    class="rounded-lg bg-transparent border-2 border-purple-300 text-purple-700 font-bold p-4 hover:bg-purple-500 hover:text-white w-fit cursor-pointer"
+                    class="rounded-lg bg-transparent border-2 border-purple-300 text-purple-700 font-bold p-2 hover:bg-purple-700 hover:text-white w-fit cursor-pointer"
             >
                 Novo agendamento
             </a>
@@ -53,8 +53,8 @@ $appointmentsFind = $appointment->find()->fetch(true);
                 <table class="w-full border-collapse min-w-max text-center mr-4 relative">
                     <thead class="bg-purple-700 text-white">
                         <tr>
-                            <th class="p-4 rounded-tl-lg">Horário</th>
-                            <th>Cliente</th>
+                            <th class="p-2 rounded-tl-lg">Horário</th>
+                            <th>Paciente</th>
                             <th>Profissional</th>
                             <th>Tipo de agendamento</th>
                             <th class="rounded-tr-lg">Status</th>
@@ -65,8 +65,11 @@ $appointmentsFind = $appointment->find()->fetch(true);
                         if ($postSearh !== date("Y-m-d")) :?>
                             <?php foreach ($res as $item) :?>
                                 <tr class="bg-gray-100 border-t-4 border-purple-200 text-gray-600"">
-                                    <td class="p-4"><?= $item->horario ?></td>
-                                    <td><?= $item->nome ?></td>
+                                    <td class="p-2"><?= $item->horario ?></td>
+                                    <td title="Editar agendamento"><a href="update-appointment.php?id=<?= $item->id ?>" class="hover:text-purple-900 hover:font-bold">
+                                            <?= $item->nome ?>
+                                        </a>
+                                    </td>
                                     <td><?= $item->profissional ?></td>
                                     <td><?= $item->tipo_agendamento ?></td>
                                     <td><?= $item->status ?></td>

@@ -9,14 +9,17 @@
 
     <title>Novo agendamento</title>
 </head>
-<body class="bg-gray-100">
-    <div class="flex-1 items-center justify-center h-screen w-96">
+<body class="bg-gray-100 flex flex-col items-center justify-center h-screen gap-8 relative">
+
+    <h2 class="font-bold text-purple-900 text-xl uppercase">Novo agendamento</h2>
+
+    <div class="w-96">
         <form action="./source/commands/create_appointment.php" method="POST" class="flex flex-col gap-4">
-            <input type="text" name="nome" class="p-4 bg-transparent border-2 border-purple-500 rounded-lg text-gray-500">
-            <input type="date" name="data_agendamento" class="p-4 bg-transparent border-2 border-purple-500 rounded-lg text-gray-500">
-            <input type="time" name="horario" class="p-4 bg-transparent border-2 border-purple-500 rounded-lg text-gray-500">
-            <input type="text" name="profissional" class="p-4 bg-transparent border-2 border-purple-500 rounded-lg text-gray-500">
-            <select name="tipo_agendamento" id="" class="p-4 bg-transparent border-2 border-purple-500 rounded-lg text-gray-500">
+            <input type="text" placeholder="Digite o nome do paciente" name="nome" class="p-2 bg-transparent border-2 border-gray-400 rounded-lg text-gray-500 focus:outline-purple-700">
+            <input type="date" name="data_agendamento" class="p-2 bg-transparent border-2 border-gray-400 rounded-lg text-gray-500 focus:outline-purple-700">
+            <input type="time" name="horario" class="p-2 bg-transparent border-2 border-gray-400 rounded-lg text-gray-500 focus:outline-purple-700">
+            <input type="text" placeholder="Digite o nome do profissional" name="profissional" class="p-2 bg-transparent border-2 border-gray-400 rounded-lg text-gray-500 focus:outline-purple-700">
+            <select name="tipo_agendamento" id="" class="p-2 bg-transparent border-2 border-gray-400 rounded-lg text-gray-500 focus:outline-purple-700">
                 <option value="" selected>Selecione...</option>
                 <option value="Avaliação">Avaliação</option>
                 <option value="Sessão">Sessão</option>
@@ -25,7 +28,7 @@
                 <option value="Consulta">Consulta</option>
                 <option value="Retorno">Retorno</option>
             </select>
-            <select name="status" id="" class="p-4 bg-transparent border-2 border-purple-500 rounded-lg text-gray-500">
+            <select name="status" id="" class="p-2 bg-transparent border-2 border-gray-400 rounded-lg text-gray-500 focus:outline-purple-700">
                 <option value="" selected>Selecione...</option>
                 <option value="Confirmado">Confirmado</option>
                 <option value="Presença">Presença</option>
@@ -34,8 +37,20 @@
                 <option value="Falta">Falta</option>
             </select>
 
-            <button>Salvar</button>
+            <button
+                    class="rounded-lg bg-purple-700 text-white font-bold p-2 hover:bg-purple-600"
+            >
+                Salvar
+            </button>
         </form>
     </div>
+
+    <a
+            href="./index.php"
+            class="p-2 border-2 bg-transparent text-purple-700 font-bold rounded-lg
+                    hover:bg-purple-700 hover:text-white fixed right-4 top-4"
+    >
+        Voltar para a página inicial
+    </a>
 </body>
 </html>
