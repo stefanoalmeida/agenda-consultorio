@@ -14,6 +14,7 @@ class Agendamento extends DataLayer
                 "nome",
                 "data_agendamento",
                 "horario",
+                "sala",
                 "tipo_agendamento",
                 "status"
             ]);

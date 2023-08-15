@@ -27,6 +27,15 @@ $professionalFind = $professional->find("status = :st", "st=Ativo")->fetch(true)
             <input type="text" placeholder="Digite o nome do paciente" name="nome" class="p-2 bg-transparent border-2 border-gray-400 rounded-lg text-gray-500 focus:outline-purple-700">
             <input type="date" name="data_agendamento" class="p-2 bg-transparent border-2 border-gray-400 rounded-lg text-gray-500 focus:outline-purple-700">
             <input type="time" name="horario" class="p-2 bg-transparent border-2 border-gray-400 rounded-lg text-gray-500 focus:outline-purple-700">
+            <select name="sala" id="" class="p-2 bg-transparent border-2 border-gray-400 rounded-lg text-gray-500 focus:outline-purple-700">
+                <option value="" selected>Selecione a sala de atendimento</option>
+                <option value="Sala 01">Sala 01</option>
+                <option value="Sala 02">Sala 02</option>
+                <option value="Sala 03">Sala 03</option>
+                <option value="Sala 04">Sala 04</option>
+                <option value="Sala 05">Sala 05</option>
+                <option value="Sala 06">Sala 06</option>
+            </select>
             <select name="id_profissional" id="" class="p-2 bg-transparent border-2 border-gray-400 rounded-lg text-gray-500 focus:outline-purple-700">
                 <option value="" selected>Selecione o profissional</option>
                 <?php foreach ($professionalFind as $prof) :?>
