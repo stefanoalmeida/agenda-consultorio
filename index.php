@@ -108,6 +108,14 @@ $appointmentsFind = $appointment->find()->fetch(true);
             >
                 Cadastrar profissional
             </a>
+            <a
+                    href="./exportAppointments.php"
+                    title="Exportar agendamentos"
+                    class="rounded-lg bg-transparent border border-purple-300 text-purple-700 font-bold p-2 shadow-lg
+                    hover:shadow-purple-400/70 hover:border-none hover:bg-purple-700 hover:text-white w-fit cursor-pointer"
+            >
+                Exportar agendamentos
+            </a>
         </div>
         <div class="overflow-y-auto h-[36rem]">
             <table class="w-full border-collapse min-w-max text-center mr-4 relative">
