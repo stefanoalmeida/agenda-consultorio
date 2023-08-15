@@ -1,3 +1,7 @@
+<?php
+session_start();
+require_once __DIR__ . "/vendor/autoload.php";
+?>
 <!doctype html>
 <html lang="pt-BR">
 <head>
@@ -13,8 +17,12 @@
 
 <h2 class="font-bold text-purple-700 text-xl uppercase">Exportar agendamentos</h2>
 
+<?php if ($_SESSION["erro"]) :?>
+    <span class="rounded-md bg-yellow-400 p-4 mb-4 text-white font-bold text-xl"><?= $_SESSION["erro"] ?></span>
+<?php endif; unset($_SESSION["erro"]) ?>
+
 <div class="w-96">
-    <form action="./source/commands/create_professional.php" method="POST" class="flex flex-col gap-3">
+    <form action="./relAppointments.php" method="POST" class="flex flex-col gap-3">
         <div class="flex flex-col gap-1">
             <label for="" class="text-gray-500">Data Inicial:</label>
             <input type="date" name="data_inicial"
@@ -34,13 +42,27 @@
                     class="w-full p-2 bg-transparent border-2 border-gray-400 rounded-lg text-gray-500
                     focus:outline-purple-700"
             >
-                <option value="" selected>Selecione a sala...</option>
+                <option value="" selected>Selecione a sala</option>
                 <option value="Sala 01">Sala 01</option>
                 <option value="Sala 02">Sala 02</option>
                 <option value="Sala 03">Sala 03</option>
                 <option value="Sala 04">Sala 04</option>
                 <option value="Sala 05">Sala 05</option>
                 <option value="Sala 06">Sala 06</option>
+            </select>
+        </div>
+
+        <div class="flex flex-col gap-1">
+            <select name="profissional" id=""
+                    class="w-full p-2 bg-transparent border-2 border-gray-400 rounded-lg text-gray-500 focus:outline-purple-700">
+                <?php
+                $professionals = new \Source\Models\Profissional();
+                $professionalFind = $professionals->find()->fetch(true);
+                ?>
+                <option value="" selected>Selecione um profissional</option>
+                <?php foreach ($professionalFind as $prof) : ?>
+                    <option value="<?= $prof->id ?>"><?= $prof->nome ?></option>
+                <?php endforeach; ?>
             </select>
         </div>
 
