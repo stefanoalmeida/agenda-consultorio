@@ -12,7 +12,7 @@ $result = $appointment->findById($id);
 
 $result->destroy();
 
-$_SESSION["sucess"] = "Agendamento excluído com sucesso!";
+$_SESSION["success"] = "Agendamento excluído com sucesso!";
 header("Location: ./../../new_appointment.php");
 
 

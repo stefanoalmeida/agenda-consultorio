@@ -13,5 +13,5 @@ $professional->status = "Ativo";
 
 $professional->save();
 
-$_SESSION["sucess"] = "Profissional registrado com sucesso!";
+$_SESSION["success"] = "Profissional registrado com sucesso!";
 header('Location: ./../../new_professional.php');

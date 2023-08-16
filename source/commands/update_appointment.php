@@ -17,5 +17,5 @@ $appointment->status = filter_input(INPUT_POST, "status", FILTER_SANITIZE_STRIPP
 
 $appointment->save();
 
-$_SESSION["sucess"] = "Agendamento alterado com sucesso!";
+$_SESSION["success"] = "Agendamento alterado com sucesso!";
 header('Location: ./../../new_appointment.php');

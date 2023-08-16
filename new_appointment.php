@@ -23,12 +23,12 @@ $professionalFind = $professional->find("status = :st", "st=Ativo")->fetch(true)
 
 <h2 class="font-bold text-purple-700 text-xl uppercase">Novo agendamento</h2>
 
-<?php if ($_SESSION["error"]) :?>
+<?php if (isset($_SESSION["error"])) :?>
     <span class="rounded-md bg-transparent border-2 border-red-500 p-2 text-red-500 font-medium text-md"><?= $_SESSION["error"] ?></span>
 <?php unset($_SESSION["error"]) ?>
-<?php elseif ($_SESSION["sucess"]) :?>
-    <span class="rounded-md bg-transparent border-2 border-green-500 p-2 text-green-500 font-medium text-md"><?= $_SESSION["sucess"] ?></span>
-<?php unset($_SESSION["sucess"]); endif; ?>
+<?php elseif (isset($_SESSION["success"])) :?>
+    <span class="rounded-md bg-transparent border-2 border-green-500 p-2 text-green-500 font-medium text-md"><?= $_SESSION["success"] ?></span>
+<?php unset($_SESSION["success"]); endif; ?>
 
 <div class="w-96">
     <form action="./source/commands/create_appointment.php" method="POST" class="flex flex-col gap-4">

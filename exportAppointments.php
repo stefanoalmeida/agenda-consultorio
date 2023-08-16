@@ -17,7 +17,7 @@ require_once __DIR__ . "/vendor/autoload.php";
 
 <h2 class="font-bold text-purple-700 text-xl uppercase">Exportar agendamentos</h2>
 
-<?php if ($_SESSION["error"]) :?>
+<?php if (isset($_SESSION["error"])) :?>
     <span class="rounded-md bg-transparent border-2 border-red-500 p-2 text-red-500 font-medium text-md"><?= $_SESSION["error"] ?></span>
 <?php endif; unset($_SESSION["error"]) ?>
 

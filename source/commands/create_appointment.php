@@ -33,7 +33,7 @@ if ($result > 0) {
     header('Location: ./../../new_appointment.php');
 } else {
     $appointment->save();
-    $_SESSION["sucess"] = "Agendamento registrado com sucesso!";
+    $_SESSION["success"] = "Agendamento registrado com sucesso!";
     header('Location: ./../../new_appointment.php');
 }
 

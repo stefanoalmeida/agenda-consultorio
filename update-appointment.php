@@ -88,7 +88,7 @@ $professionalFind = $professional->find("status = :st", "st=Ativo")->fetch(true)
                 Salvar alterações
             </button>
             <a
-                    href="./source/commands/delete-appointment.php?id=<?= $result->id ?>"
+                    href="source/commands/delete_appointment.php?id=<?= $result->id ?>"
                     class="w-fit rounded-lg bg-transparent text-red-500 border-2 border-red-200 font-bold p-2 shadow-lg hover:shadow-red-400/70
                         hover:border-none hover:bg-red-500 hover:text-white"
             >
