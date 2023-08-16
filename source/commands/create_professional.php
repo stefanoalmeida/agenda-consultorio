@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 use Source\Models\Profissional;
 
@@ -12,4 +13,5 @@ $professional->status = "Ativo";
 
 $professional->save();
 
-header('Location: ./../../index.php');
+$_SESSION["sucess"] = "Profissional registrado com sucesso!";
+header('Location: ./../../new_professional.php');

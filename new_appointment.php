@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once __DIR__ . "/vendor/autoload.php";
 
 use Source\Models\Profissional;
@@ -22,16 +23,23 @@ $professionalFind = $professional->find("status = :st", "st=Ativo")->fetch(true)
 
 <h2 class="font-bold text-purple-700 text-xl uppercase">Novo agendamento</h2>
 
+<?php if ($_SESSION["error"]) :?>
+    <span class="rounded-md bg-transparent border-2 border-red-500 p-2 text-red-500 font-medium text-md"><?= $_SESSION["error"] ?></span>
+<?php unset($_SESSION["error"]) ?>
+<?php elseif ($_SESSION["sucess"]) :?>
+    <span class="rounded-md bg-transparent border-2 border-green-500 p-2 text-green-500 font-medium text-md"><?= $_SESSION["sucess"] ?></span>
+<?php unset($_SESSION["sucess"]); endif; ?>
+
 <div class="w-96">
     <form action="./source/commands/create_appointment.php" method="POST" class="flex flex-col gap-4">
         <input type="text" placeholder="Digite o nome do paciente" name="nome"
-               class="p-2 bg-transparent border-2 border-gray-400 rounded-lg text-gray-500 focus:outline-purple-500">
+               class="p-2 bg-transparent border-2 border-gray-400 rounded-lg text-gray-500 focus:outline-purple-500" required>
         <input type="date" name="data_agendamento"
-               class="p-2 bg-transparent border-2 border-gray-400 rounded-lg text-gray-500 focus:outline-purple-500">
+               class="p-2 bg-transparent border-2 border-gray-400 rounded-lg text-gray-500 focus:outline-purple-500" required>
         <input type="time" name="horario"
-               class="p-2 bg-transparent border-2 border-gray-400 rounded-lg text-gray-500 focus:outline-purple-500">
+               class="p-2 bg-transparent border-2 border-gray-400 rounded-lg text-gray-500 focus:outline-purple-500" required>
         <select name="sala" id=""
-                class="p-2 bg-transparent border-2 border-gray-400 rounded-lg text-gray-500 focus:outline-purple-500">
+                class="p-2 bg-transparent border-2 border-gray-400 rounded-lg text-gray-500 focus:outline-purple-500" required>
             <option value="" selected>Selecione a sala de atendimento</option>
             <option value="Sala 01">Sala 01</option>
             <option value="Sala 02">Sala 02</option>
@@ -41,14 +49,14 @@ $professionalFind = $professional->find("status = :st", "st=Ativo")->fetch(true)
             <option value="Sala 06">Sala 06</option>
         </select>
         <select name="id_profissional" id=""
-                class="p-2 bg-transparent border-2 border-gray-400 rounded-lg text-gray-500 focus:outline-purple-500">
+                class="p-2 bg-transparent border-2 border-gray-400 rounded-lg text-gray-500 focus:outline-purple-500" required>
             <option value="" selected>Selecione o profissional</option>
             <?php foreach ($professionalFind as $prof) : ?>
                 <option value="<?= $prof->id ?>"><?= $prof->nome ?></option>
             <?php endforeach; ?>
         </select>
         <select name="tipo_agendamento" id=""
-                class="p-2 bg-transparent border-2 border-gray-400 rounded-lg text-gray-500 focus:outline-purple-500">
+                class="p-2 bg-transparent border-2 border-gray-400 rounded-lg text-gray-500 focus:outline-purple-500" required>
             <option value="" selected>Selecione o tipo de agendamento</option>
             <option value="Avaliação">Avaliação</option>
             <option value="Sessão">Sessão</option>
@@ -59,7 +67,7 @@ $professionalFind = $professional->find("status = :st", "st=Ativo")->fetch(true)
             <option value="Horário vago">Horário vago</option>
         </select>
         <select name="status" id=""
-                class="p-2 bg-transparent border-2 border-gray-400 rounded-lg text-gray-500 focus:outline-purple-500">
+                class="p-2 bg-transparent border-2 border-gray-400 rounded-lg text-gray-500 focus:outline-purple-500" required>
             <option value="" selected>Selecione o status do agendamento</option>
             <option value="Confirmado">Confirmado</option>
             <option value="Presença">Presença</option>

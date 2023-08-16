@@ -17,9 +17,9 @@ require_once __DIR__ . "/vendor/autoload.php";
 
 <h2 class="font-bold text-purple-700 text-xl uppercase">Exportar agendamentos</h2>
 
-<?php if ($_SESSION["erro"]) :?>
-    <span class="rounded-md bg-yellow-400 p-4 mb-4 text-white font-bold text-xl"><?= $_SESSION["erro"] ?></span>
-<?php endif; unset($_SESSION["erro"]) ?>
+<?php if ($_SESSION["error"]) :?>
+    <span class="rounded-md bg-transparent border-2 border-red-500 p-2 text-red-500 font-medium text-md"><?= $_SESSION["error"] ?></span>
+<?php endif; unset($_SESSION["error"]) ?>
 
 <div class="w-96">
     <form action="./relAppointments.php" method="POST" class="flex flex-col gap-3">

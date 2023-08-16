@@ -31,13 +31,13 @@ $professionalFind = $professional->find("status = :st", "st=Ativo")->fetch(true)
     <form action="source/commands/update_appointment.php" method="POST" class="flex flex-col gap-4">
         <input type="hidden" name="id" value="<?= $result->id ?>">
         <input type="text" placeholder="Digite o nome do paciente" name="nome" value="<?= $result->nome ?>"
-               class="p-2 bg-transparent border-2 border-gray-400 rounded-lg text-gray-500 focus:outline-purple-500">
+               class="p-2 bg-transparent border-2 border-gray-400 rounded-lg text-gray-500 focus:outline-purple-500" required>
         <input type="date" name="data_agendamento" value="<?= $result->data_agendamento ?>"
-               class="p-2 bg-transparent border-2 border-gray-400 rounded-lg text-gray-500 focus:outline-purple-500">
+               class="p-2 bg-transparent border-2 border-gray-400 rounded-lg text-gray-500 focus:outline-purple-500" required>
         <input type="time" name="horario" value="<?= $result->horario ?>"
-               class="p-2 bg-transparent border-2 border-gray-400 rounded-lg text-gray-500 focus:outline-purple-500">
+               class="p-2 bg-transparent border-2 border-gray-400 rounded-lg text-gray-500 focus:outline-purple-500" required>
         <select name="sala" id=""
-                class="p-2 bg-transparent border-2 border-gray-400 rounded-lg text-gray-500 focus:outline-purple-500">
+                class="p-2 bg-transparent border-2 border-gray-400 rounded-lg text-gray-500 focus:outline-purple-500" required>
             <option value="<?= $result->sala ?>" selected><?= $result->sala ?></option>
             <option value="Sala 01">Sala 01</option>
             <option value="Sala 02">Sala 02</option>
@@ -47,7 +47,7 @@ $professionalFind = $professional->find("status = :st", "st=Ativo")->fetch(true)
             <option value="Sala 06">Sala 06</option>
         </select>
         <select name="id_profissional" id=""
-                class="p-2 bg-transparent border-2 border-gray-400 rounded-lg text-gray-500 focus:outline-purple-500">
+                class="p-2 bg-transparent border-2 border-gray-400 rounded-lg text-gray-500 focus:outline-purple-500" required>
             <?php
             $conn = \CoffeeCode\DataLayer\Connect::getInstance();
             $q = $conn->query("SELECT p.nome FROM agendamentos 
@@ -60,7 +60,7 @@ $professionalFind = $professional->find("status = :st", "st=Ativo")->fetch(true)
             <?php endforeach; ?>
         </select>
         <select name="tipo_agendamento" id=""
-                class="p-2 bg-transparent border-2 border-gray-400 rounded-lg text-gray-500 focus:outline-purple-500">
+                class="p-2 bg-transparent border-2 border-gray-400 rounded-lg text-gray-500 focus:outline-purple-500" required>
             <option value="<?= $result->tipo_agendamento ?>" selected><?= $result->tipo_agendamento ?></option>
             <option value="Avaliação">Avaliação</option>
             <option value="Sessão">Sessão</option>
@@ -71,9 +71,9 @@ $professionalFind = $professional->find("status = :st", "st=Ativo")->fetch(true)
             <option value="Horário vago">Horário vago</option>
         </select>
         <select name="status" id=""
-                class="p-2 bg-transparent border-2 border-gray-400 rounded-lg text-gray-500 focus:outline-purple-500">
+                class="p-2 bg-transparent border-2 border-gray-400 rounded-lg text-gray-500 focus:outline-purple-500" required>
             <option value="<?= $result->status ?>" selected><?= $result->status ?></option>
-            <option value="Confirmado">Confirmado</option>
+            <option value="Con requiredfirmado">Confirmado</option>
             <option value="Presença">Presença</option>
             <option value="Cancelado Profissional">Cancelado Profissional</option>
             <option value="Cancelado Paciente">Cancelado Paciente</option>

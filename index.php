@@ -34,13 +34,16 @@ $appointmentsFind = $appointment->find()->fetch(true);
 
         $conn = Connect::getInstance();
         if ($postSearh and $sala) {
-            $query = $conn->query("SELECT * FROM agendamentos WHERE data_agendamento = '{$day}' AND sala = '{$sala}'");
+            $query = $conn->query("SELECT * FROM agendamentos WHERE data_agendamento = '{$day}' 
+                             AND sala = '{$sala}' ORDER BY horario ASC");
             $res = $query->fetchAll();
         } elseif ($postSearh and $profissional) {
-            $query = $conn->query("SELECT * FROM agendamentos WHERE data_agendamento = '{$day}' AND id_profissional = '{$profissional}'");
+            $query = $conn->query("SELECT * FROM agendamentos WHERE data_agendamento = '{$day}' 
+                             AND id_profissional = '{$profissional}' ORDER BY horario ASC");
             $res = $query->fetchAll();
         } else {
-            $query = $conn->query("SELECT * FROM agendamentos WHERE data_agendamento = '{$day}'");
+            $query = $conn->query("SELECT * FROM agendamentos WHERE data_agendamento = '{$day}' 
+                           ORDER BY horario ASC");
             $res = $query->fetchAll();
         }
         ?>
@@ -101,7 +104,7 @@ $appointmentsFind = $appointment->find()->fetch(true);
                 Novo agendamento
             </a>
             <a
-                    href="./new-professional.php"
+                    href="new_professional.php"
                     title="Cadastrar profissional"
                     class="rounded-lg bg-transparent border border-purple-300 text-purple-700 font-bold p-2 shadow-lg
                     hover:shadow-purple-400/70 hover:border-none hover:bg-purple-700 hover:text-white w-fit cursor-pointer"

@@ -27,8 +27,7 @@ if (!$sala && !$profissional) {
                                 BETWEEN '{$data_inicial}' AND '{$data_final}' AND sala = '{$sala}' ORDER BY horario ASC");
     $result = $query->fetchAll();
 } else {
-    $_SESSION["erro"] = "Wooops, verifique os filtros e tente novamente!";
-
+    $_SESSION["error"] = "Wooops, verifique os filtros e tente novamente!";
     header('Location: ./exportAppointments.php');
 }
 ?>

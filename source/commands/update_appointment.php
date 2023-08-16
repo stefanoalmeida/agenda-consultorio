@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 use Source\Models\Agendamento;
 
 require_once __DIR__ . "./../../vendor/autoload.php";
@@ -17,4 +17,5 @@ $appointment->status = filter_input(INPUT_POST, "status", FILTER_SANITIZE_STRIPP
 
 $appointment->save();
 
-header('Location: ./../../index.php');
+$_SESSION["sucess"] = "Agendamento alterado com sucesso!";
+header('Location: ./../../new_appointment.php');

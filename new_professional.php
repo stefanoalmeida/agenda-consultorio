@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!doctype html>
 <html lang="pt-BR">
 <head>
@@ -13,17 +17,25 @@
 
 <h2 class="font-bold text-purple-700 text-xl uppercase">Novo profissional</h2>
 
+<?php if ($_SESSION["sucess"]) : ?>
+    <span class="rounded-md bg-transparent border-2 border-green-500 p-2 text-green-500 font-medium text-md"><?= $_SESSION["sucess"] ?></span>
+    <?php unset($_SESSION["sucess"]); endif; ?>
+
 <div class="w-96">
     <form action="./source/commands/create_professional.php" method="POST" class="flex flex-col gap-4">
         <input type="text" placeholder="Digite o nome do profissional" name="nome"
-               class="p-2 bg-transparent border-2 border-gray-400 rounded-lg text-gray-500 focus:outline-purple-500">
+               class="p-2 bg-transparent border-2 border-gray-400 rounded-lg text-gray-500 focus:outline-purple-500"
+               required>
         <select name="especialidade" id=""
-                class="p-2 bg-transparent border-2 border-gray-400 rounded-lg text-gray-500 focus:outline-purple-500">
-            <option value="" selected>Selecione...</option>
-            <option value="Fonoaudióloga">Fonoaudióloga</option>
-            <option value="Psicóloga">Psicóloga</option>
-            <option value="Neurologista">Neurologista</option>
-            <option value="Psicopedagoga">Psicopedagoga</option>
+                class="p-2 bg-transparent border-2 border-gray-400 rounded-lg text-gray-500 focus:outline-purple-500"
+                required>
+            <option value="" selected>Selecione a especialidade</option>
+            <option value="Fonoaudiologia">Fonoaudiologia</option>
+            <option value="Psicologia">Psicologia</option>
+            <option value="Neurologia">Neurologia</option>
+            <option value="Psicopedagogia">Psicopedagogia</option>
+            <option value="Nutrição">Nutrição</option>
+            <option value="Neuropsicologia">Neuropsicologia</option>
         </select>
         <button
                 class="rounded-lg bg-purple-700 text-white font-bold p-2 shadow-lg hover:shadow-purple-400/70 hover:border-none
