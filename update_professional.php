@@ -1,8 +1,12 @@
 <?php
-session_start();
 require_once __DIR__ . "/vendor/autoload.php";
 
+use Source\Core\Session;
 use Source\Models\Profissional;
+
+$session = new Session();
+$session->verifySession();
+$session->regenerate();
 
 $id = filter_input(INPUT_GET, 'id', FILTER_DEFAULT);
 
@@ -19,7 +23,7 @@ $res = $professional->findById($id);
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="https://cdn.tailwindcss.com"></script>
 
-    <title>Novo profissional</title>
+    <title>Editar profissional</title>
 </head>
 <body class="bg-white-100 flex flex-col items-center justify-center h-screen gap-8 relative">
 

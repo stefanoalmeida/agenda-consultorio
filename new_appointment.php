@@ -1,8 +1,12 @@
 <?php
-session_start();
 require_once __DIR__ . "/vendor/autoload.php";
 
+use Source\Core\Session;
 use Source\Models\Profissional;
+
+$session = new Session();
+$session->verifySession();
+$session->regenerate();
 
 $professional = new Profissional();
 $professionalFind = $professional->find("status = :st", "st=Ativo")->fetch(true);
@@ -86,7 +90,7 @@ $professionalFind = $professional->find("status = :st", "st=Ativo")->fetch(true)
     </form>
 </div>
 <a
-        href="./index.php"
+        href="home.php"
         class="p-2 bg-transparent text-purple-700 font-bold rounded-lg shadow-lg
                     hover:bg-purple-700 hover:text-white hover:shadow-purple-500/70 hover:border-none fixed right-4 top-4"
 >

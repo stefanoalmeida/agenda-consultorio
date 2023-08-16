@@ -1,6 +1,12 @@
 <?php
-session_start();
 require_once __DIR__ . "/vendor/autoload.php";
+
+use Source\Core\Session;
+
+$session = new Session();
+$session->verifySession();
+$session->regenerate();
+
 ?>
 <!doctype html>
 <html lang="pt-BR">
@@ -17,9 +23,10 @@ require_once __DIR__ . "/vendor/autoload.php";
 
 <h2 class="font-bold text-purple-700 text-xl uppercase">Exportar agendamentos</h2>
 
-<?php if (isset($_SESSION["error"])) :?>
+<?php if (isset($_SESSION["error"])) : ?>
     <span class="rounded-md bg-transparent border-2 border-red-500 p-2 text-red-500 font-medium text-md"><?= $_SESSION["error"] ?></span>
-<?php endif; unset($_SESSION["error"]) ?>
+<?php endif;
+unset($_SESSION["error"]) ?>
 
 <div class="w-96">
     <form action="./relAppointments.php" method="POST" class="flex flex-col gap-3">
@@ -75,7 +82,7 @@ require_once __DIR__ . "/vendor/autoload.php";
     </form>
 </div>
 <a
-        href="./index.php"
+        href="home.php"
         class="p-2 bg-transparent text-purple-700 font-bold rounded-lg shadow-lg hover:shadow-purple-500/70
         hover:border-none hover:bg-purple-700 hover:text-white fixed right-4 top-4"
 >

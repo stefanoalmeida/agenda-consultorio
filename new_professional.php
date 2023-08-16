@@ -1,8 +1,12 @@
 <?php
-session_start();
 require_once __DIR__ . "/vendor/autoload.php";
 
+use Source\Core\Session;
 use Source\Models\Profissional;
+
+$session = new Session();
+$session->verifySession();
+$session->regenerate();
 
 $professional = new Profissional();
 $professionals = $professional->find()->fetch();
@@ -54,7 +58,7 @@ $res = $professional->fetch(true);
         </form>
     </div>
     <a
-            href="./index.php"
+            href="home.php"
             class="p-2 bg-transparent text-purple-700 font-bold rounded-lg shadow-lg hover:shadow-purple-500/70
         hover:border-none hover:bg-purple-700 hover:text-white fixed right-4 top-4"
     >
@@ -62,7 +66,7 @@ $res = $professional->fetch(true);
     </a>
 </div>
 <div class="w-full col-span-2 flex flex-col gap-4 mt-8">
-    <div class="overflow-y-auto h-[36rem]">
+    <div class="overflow-y-auto overflow-x-hidden h-[36rem]">
         <table class="w-full border-collapse min-w-max text-center mr-4 relative">
             <thead class="bg-purple-700 text-white">
             <tr>
@@ -76,14 +80,14 @@ $res = $professional->fetch(true);
             if ($res) :?>
                 <?php foreach ($res as $item) : ?>
                     <tr class="bg-transparent border-t-4 border-purple-200 text-gray-600"">
-                        <td title="Editar profissional">
-                            <a href="update_professional.php?id=<?= $item->id ?>"
-                               class="hover:text-purple-900 hover:font-bold">
-                                <?= $item->nome ?>
-                            </a>
-                        </td>
-                        <td class="p-2"><?= $item->especialidade ?></td>
-                        <td class="p-2"><?= $item->status ?></td>
+                    <td title="Editar profissional">
+                        <a href="update_professional.php?id=<?= $item->id ?>"
+                           class="hover:text-purple-900 hover:font-bold">
+                            <?= $item->nome ?>
+                        </a>
+                    </td>
+                    <td class="p-2"><?= $item->especialidade ?></td>
+                    <td class="p-2"><?= $item->status ?></td>
                     </tr>
                 <?php endforeach; ?>
             <?php endif; ?>
