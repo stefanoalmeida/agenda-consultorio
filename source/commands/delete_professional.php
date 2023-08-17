@@ -1,9 +1,11 @@
 <?php
-session_start();
 
+use Source\Core\Session;
 use Source\Models\Profissional;
 
 require_once __DIR__ . "./../../vendor/autoload.php";
+
+$session = new Session();
 
 $id = filter_input(INPUT_GET, "id", FILTER_VALIDATE_INT);
 
@@ -13,7 +15,7 @@ $result = $professional->findById($id);
 
 $result->destroy();
 
-$_SESSION["success"] = "Profissional excluído com sucesso!";
+$session->set("success", "Profissional excluído com sucesso!");
 header("Location: ./../../new_professional.php");
 
 

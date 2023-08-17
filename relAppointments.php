@@ -1,10 +1,12 @@
 <?php
-session_start();
 
 use CoffeeCode\DataLayer\Connect;
+use Source\Core\Session;
 use Source\Models\Agendamento;
 
 require_once __DIR__ . "/vendor/autoload.php";
+
+$session = new Session();
 
 $data_inicial = filter_input(INPUT_POST, "data_inicial");
 $data_final = filter_input(INPUT_POST, "data_final");
@@ -27,7 +29,7 @@ if (!$sala && !$profissional) {
                                 BETWEEN '{$data_inicial}' AND '{$data_final}' AND sala = '{$sala}' ORDER BY horario ASC");
     $result = $query->fetchAll();
 } else {
-    $_SESSION["error"] = "Wooops, verifique os filtros e tente novamente!";
+    $session->set("error", "Wooops, verifique os filtros e tente novamente!");
     header('Location: ./exportAppointments.php');
 }
 ?>

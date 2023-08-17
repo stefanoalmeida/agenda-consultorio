@@ -1,10 +1,11 @@
 <?php
+require_once __DIR__ . "/vendor/autoload.php";
 
 use Source\Core\Session;
 
-require_once __DIR__ . "/vendor/autoload.php";
 $session = new Session();
 $session->regenerate();
+
 ?>
 <!doctype html>
 <html lang="pt-BR">
@@ -20,10 +21,6 @@ $session->regenerate();
 <body class="bg-white-100 flex flex-col items-center justify-center h-screen gap-8 relative">
 
 <h2 class="font-bold text-purple-700 text-xl uppercase">Faça seu Login</h2>
-
-<?php if (isset($_SESSION["success"])) : ?>
-    <span class="rounded-md bg-transparent border-2 border-green-500 p-2 text-green-500 font-medium text-md"><?= $_SESSION["success"] ?></span>
-    <?php unset($_SESSION["success"]); endif; ?>
 
 <div class="w-96">
     <form action="./source/login_validate.php" method="POST" class="flex flex-col gap-4">

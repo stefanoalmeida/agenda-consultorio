@@ -1,10 +1,11 @@
 <?php
-session_start();
-
 use CoffeeCode\DataLayer\Connect;
+use Source\Core\Session;
 use Source\Models\Agendamento;
 
 require_once __DIR__ . "./../../vendor/autoload.php";
+
+$session = new Session();
 
 $appointment = new Agendamento();
 
@@ -28,12 +29,12 @@ $q = $conn->query("SELECT p.nome FROM agendamentos
 $r = $q->fetch();
 
 if ($result > 0) {
-    $_SESSION["error"] = "Wooops, parece que já existe um agendamento para " . $r->nome . "
-    no dia " . date("d/m/Y", strtotime($appointment->data_agendamento)) . " às $appointment->horario!";
+    $session->set("error", "Wooops, parece que já existe um agendamento para " . $r->nome . "
+    no dia " . date("d/m/Y", strtotime($appointment->data_agendamento)) . " às $appointment->horario!");
     header('Location: ./../../new_appointment.php');
 } else {
     $appointment->save();
-    $_SESSION["success"] = "Agendamento registrado com sucesso!";
+    $session->set("success", "Agendamento registrado com sucesso!");
     header('Location: ./../../new_appointment.php');
 }
 

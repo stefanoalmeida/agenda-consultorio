@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.1.0
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Tempo de geração: 15/08/2023 às 04:17
--- Versão do servidor: 10.4.27-MariaDB
--- Versão do PHP: 8.2.0
+-- Host: 127.0.0.1
+-- Tempo de geração: 17-Ago-2023 às 19:57
+-- Versão do servidor: 10.4.19-MariaDB
+-- versão do PHP: 7.3.28
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `agendamentos`
+-- Estrutura da tabela `agendamentos`
 --
 
 CREATE TABLE `agendamentos` (
@@ -38,24 +38,21 @@ CREATE TABLE `agendamentos` (
   `status` varchar(255) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL ON UPDATE current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Despejando dados para a tabela `agendamentos`
+-- Extraindo dados da tabela `agendamentos`
 --
 
 INSERT INTO `agendamentos` (`id`, `id_profissional`, `nome`, `data_agendamento`, `horario`, `sala`, `tipo_agendamento`, `status`, `created_at`, `updated_at`) VALUES
-(17, 2, 'Raul Almeida', '2023-08-14', '16:30:00', 'Sala 01', 'Avaliação', 'Confirmado', '2023-08-14 17:27:10', '2023-08-15 00:34:22'),
-(19, 2, 'Helena Giovanelli', '2023-08-15', '11:40:00', 'Sala 03', 'Reposição', 'Confirmado', '2023-08-14 17:47:45', '2023-08-15 00:49:40'),
-(20, 2, 'Gustavo Giovanelli', '2023-08-15', '10:40:00', 'Sala 04', 'Avaliação', 'Confirmado', '2023-08-14 17:55:43', '2023-08-15 00:49:53'),
-(21, 5, 'Eliana Franco', '2023-08-14', '15:40:00', 'Sala 02', 'Avaliação', 'Presença', '2023-08-14 23:54:43', '2023-08-15 00:34:29'),
-(22, 4, 'Luiza Meleiro', '2023-08-16', '10:40:00', 'Sala 03', 'Reposição', 'Confirmado', '2023-08-15 00:35:23', '2023-08-15 00:35:23'),
-(23, 5, 'Maria Clara', '2023-08-14', '11:20:00', 'Sala 01', 'Avaliação', 'Confirmado', '2023-08-15 01:01:26', '2023-08-15 01:01:26');
+(28, 8, 'Stefano Almeida', '2023-08-16', '17:30:00', 'Sala 01', 'Avaliação', 'Falta', '2023-08-16 19:19:53', '2023-08-17 12:53:58'),
+(29, 8, 'Raul Almeida', '2023-08-17', '15:30:00', 'Sala 05', 'Avaliação', 'Confirmado', '2023-08-17 12:52:29', '2023-08-17 13:03:44'),
+(30, 8, 'Renan Vinicius', '2023-08-17', '12:30:00', 'Sala 06', 'Retorno', 'Confirmado', '2023-08-17 13:05:22', '2023-08-17 13:05:22');
 
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `profissionais`
+-- Estrutura da tabela `profissionais`
 --
 
 CREATE TABLE `profissionais` (
@@ -65,57 +62,88 @@ CREATE TABLE `profissionais` (
   `status` varchar(50) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Despejando dados para a tabela `profissionais`
+-- Extraindo dados da tabela `profissionais`
 --
 
 INSERT INTO `profissionais` (`id`, `nome`, `especialidade`, `status`, `created_at`, `updated_at`) VALUES
-(2, 'Tatiana Franco', 'Fonoaudióloga', 'Ativo', '2023-08-14 17:17:48', '2023-08-14 17:17:48'),
-(3, 'Fabiola Passos', 'Psicóloga', 'Ativo', '2023-08-14 17:18:00', '2023-08-14 17:18:00'),
-(4, 'Thamires Iengo', 'Psicóloga', 'Inativo', '2023-08-14 18:22:56', '2023-08-14 18:22:56'),
-(5, 'Renata Ruano', 'Fonoaudióloga', 'Ativo', '2023-08-14 23:53:41', '2023-08-14 23:53:41');
+(8, 'Tatiana Franco', 'Psicologia', 'Ativo', '2023-08-16 19:19:36', '2023-08-17 13:17:54'),
+(9, 'Stefano Almeida', 'Psicopedagogia', 'Ativo', '2023-08-17 13:08:20', '2023-08-17 13:08:20');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `users`
+--
+
+CREATE TABLE `users` (
+  `id` int(11) NOT NULL,
+  `user` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Extraindo dados da tabela `users`
+--
+
+INSERT INTO `users` (`id`, `user`, `password`, `created_at`, `updated_at`) VALUES
+(1, 'stefano.almeida', 'OTAxNjEw', NULL, NULL);
 
 --
 -- Índices para tabelas despejadas
 --
 
 --
--- Índices de tabela `agendamentos`
+-- Índices para tabela `agendamentos`
 --
 ALTER TABLE `agendamentos`
   ADD PRIMARY KEY (`id`),
   ADD KEY `id_profissional` (`id_profissional`);
 
 --
--- Índices de tabela `profissionais`
+-- Índices para tabela `profissionais`
 --
 ALTER TABLE `profissionais`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT para tabelas despejadas
+-- Índices para tabela `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT de tabelas despejadas
 --
 
 --
 -- AUTO_INCREMENT de tabela `agendamentos`
 --
 ALTER TABLE `agendamentos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT de tabela `profissionais`
 --
 ALTER TABLE `profissionais`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
--- Restrições para tabelas despejadas
+-- AUTO_INCREMENT de tabela `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- Restrições para despejos de tabelas
 --
 
 --
--- Restrições para tabelas `agendamentos`
+-- Limitadores para a tabela `agendamentos`
 --
 ALTER TABLE `agendamentos`
   ADD CONSTRAINT `agendamentos_ibfk_1` FOREIGN KEY (`id_profissional`) REFERENCES `profissionais` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;

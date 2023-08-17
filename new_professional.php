@@ -33,7 +33,7 @@ $res = $professional->fetch(true);
         <span class="rounded-md bg-transparent border-2 border-green-500 p-2 text-green-500 font-medium text-md"><?= $_SESSION["success"] ?></span>
         <?php unset($_SESSION["success"]); endif; ?>
 
-    <div class="w-96">
+    <div class="w-[22rem]">
         <form action="./source/commands/create_professional.php" method="POST" class="flex flex-col gap-4">
             <input type="text" placeholder="Digite o nome do profissional" name="nome"
                    class="p-2 bg-transparent border-2 border-gray-400 rounded-lg text-gray-500 focus:outline-purple-500"

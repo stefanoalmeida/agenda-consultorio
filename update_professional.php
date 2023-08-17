@@ -80,7 +80,7 @@ $res = $professional->findById($id);
         class="p-2 bg-transparent text-purple-700 font-bold rounded-lg shadow-lg hover:shadow-purple-500/70
         hover:border-none hover:bg-purple-700 hover:text-white fixed right-4 top-4"
 >
-    Voltar para a página inicial
+    Voltar para a listagem de profissionais
 </a>
 </body>
 </html>

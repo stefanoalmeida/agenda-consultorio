@@ -25,7 +25,7 @@ $appointmentsFind = $appointment->find()->fetch(true);
 </head>
 <body class="bg-white-100 overflow-y-hidden">
 <div class="grid grid-cols-3 items-center justify-center p-4 h-screen">
-    <div class="col-span-1">
+    <div class="w-[24rem]">
         <?php
         $postSearh = filter_input(INPUT_POST, "search");
         $sala = filter_input(INPUT_POST, "sala", FILTER_SANITIZE_STRIPPED);
