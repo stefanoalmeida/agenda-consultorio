@@ -2,22 +2,21 @@
 
 namespace Source\Core;
 
-use PDO;
+use CoffeeCode\DataLayer\Connect;
 
 class Login
 {
 
     function autentica($user, $senha)
     {
-        $conn = \CoffeeCode\DataLayer\Connect::getInstance();
-        $query = $conn->query("SELECT count(*) as conectado FROM users WHERE user = '{$user}' AND password = '{$senha}'");
-        $query->execute();
-        $result = $query->fetch(PDO::FETCH_OBJ);
-        return $result->conectado;
+        $conn = Connect::getInstance();
+        $query = $conn->query("SELECT * FROM users WHERE user = '{$user}' AND password = '{$senha}'");
+        $result = $query->rowCount();
+        return $result;
     }
 
     function buscar($user, $senha){
-        $conn = \CoffeeCode\DataLayer\Connect::getInstance();
+        $conn = Connect::getInstance();
         $resultado = $conn->query("SELECT * FROM users WHERE user = '$user' AND password = '$senha'");
         $lista = $resultado->fetch();
         return $lista;

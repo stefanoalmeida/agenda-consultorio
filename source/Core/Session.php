@@ -29,8 +29,8 @@ class Session
 
     public function verifySession()
     {
-        if (!isset($_SESSION['logado'])) {
-            header("location: ./../../agenda-consultorio/index.php");
+        if (!isset($_SESSION["logado"])) {
+            header("location: ./index.php");
             exit();
         }
     }

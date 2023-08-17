@@ -1,6 +1,5 @@
 <?php
 
-define("ROOT", "https://agenda.tsterapiaesaude.com.br");
 define("TIMEZONE", date_default_timezone_set("America/Sao_Paulo"));
 define("CONF_SES_PATH", __DIR__ . "/../storage/sessions/");
 
