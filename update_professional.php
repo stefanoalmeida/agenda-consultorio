@@ -27,14 +27,14 @@ $res = $professional->findById($id);
 </head>
 <body class="bg-white-100 flex flex-col items-center justify-center h-screen gap-8 relative">
 
-<h2 class="font-bold text-purple-700 text-xl uppercase">Novo profissional</h2>
+<h2 class="font-bold text-purple-700 text-xl uppercase mt-16">Novo profissional</h2>
 
 <?php if (isset($_SESSION["success"])) : ?>
     <span class="rounded-md bg-transparent border-2 border-green-500 p-2 text-green-500 font-medium text-md"><?= $_SESSION["success"] ?></span>
     <?php unset($_SESSION["success"]); endif; ?>
 
 <div class="w-96">
-    <form action="./source/commands/update_professional.php" method="POST" class="flex flex-col gap-4">
+    <form action="./source/commands/update_professional.php" method="POST" class="flex flex-col gap-4 p-4">
         <input type="hidden" name="id" value="<?= $res->id ?>">
         <input type="text" placeholder="Digite o nome do profissional" name="nome"
                class="p-2 bg-transparent border-2 border-gray-400 rounded-lg text-gray-500 focus:outline-purple-500"

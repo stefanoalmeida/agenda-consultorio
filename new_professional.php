@@ -24,10 +24,10 @@ $res = $professional->fetch(true);
 
     <title>Novo profissional</title>
 </head>
-<body class="grid grid-cols-3 items-center justify-center p-4 h-screen overflow-y-hidden gap-12">
+<body class="flex flex-col items-center justify-center p-4 h-fit md:grid md:grid-cols-3 md:h-screen md:gap-12">
 
-<div class="bg-white-100 flex flex-col items-center justify-center h-screen gap-8 relative">
-    <h2 class="font-bold text-purple-700 text-xl uppercase">Novo profissional</h2>
+<div class="bg-white-100 flex flex-col items-center justify-center gap-8 md:h-screen relative">
+    <h2 class="font-bold text-purple-700 text-xl uppercase mt-16 md:mt-0">Novo profissional</h2>
 
     <?php if (isset($_SESSION["success"])) : ?>
         <span class="rounded-md bg-transparent border-2 border-green-500 p-2 text-green-500 font-medium text-md"><?= $_SESSION["success"] ?></span>
@@ -66,7 +66,7 @@ $res = $professional->fetch(true);
     </a>
 </div>
 <div class="w-full col-span-2 flex flex-col gap-4 mt-8">
-    <div class="overflow-y-auto overflow-x-hidden h-[36rem]">
+    <div class="overflow-y-auto overflow-x-hidden h-[20rem] md:h-[36rem]">
         <table class="w-full border-collapse min-w-max text-center mr-4 relative">
             <thead class="bg-purple-700 text-white">
             <tr>

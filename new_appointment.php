@@ -25,7 +25,7 @@ $professionalFind = $professional->find("status = :st", "st=Ativo")->fetch(true)
 </head>
 <body class="bg-white-100 flex flex-col items-center justify-center h-screen gap-8 relative">
 
-<h2 class="font-bold text-purple-700 text-xl uppercase">Novo agendamento</h2>
+<h2 class="font-bold text-purple-700 text-xl uppercase mt-16 md:mt-0">Novo agendamento</h2>
 
 <?php if (isset($_SESSION["error"])) :?>
     <span class="rounded-md bg-transparent border-2 border-red-500 p-2 text-red-500 font-medium text-md"><?= $_SESSION["error"] ?></span>
@@ -35,7 +35,7 @@ $professionalFind = $professional->find("status = :st", "st=Ativo")->fetch(true)
 <?php unset($_SESSION["success"]); endif; ?>
 
 <div class="w-96">
-    <form action="./source/commands/create_appointment.php" method="POST" class="flex flex-col gap-4">
+    <form action="./source/commands/create_appointment.php" method="POST" class="flex flex-col gap-4 p-4">
         <input type="text" placeholder="Digite o nome do paciente" name="nome"
                class="p-2 bg-transparent border-2 border-gray-400 rounded-lg text-gray-500 focus:outline-purple-500" required>
         <input type="date" name="data_agendamento"

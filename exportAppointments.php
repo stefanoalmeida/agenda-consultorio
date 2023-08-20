@@ -29,7 +29,7 @@ $session->regenerate();
 unset($_SESSION["error"]) ?>
 
 <div class="w-96">
-    <form action="./relAppointments.php" method="POST" class="flex flex-col gap-3">
+    <form action="./relAppointments.php" method="POST" class="flex flex-col gap-3 p-4">
         <div class="flex flex-col gap-1">
             <label for="" class="text-gray-500">Data Inicial:</label>
             <input type="date" name="data_inicial"

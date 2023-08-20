@@ -1,21 +1,21 @@
 <?php
 require_once __DIR__ . '/../vendor/autoload.php';
 
-use Source\Core\Login;
 use Source\Core\Session;
+use Source\Models\User;
 
 $session = new Session();
 
-$login = new Login();
-$lista = $login->buscar($_POST['user'], base64_encode($_POST['senha']));
+$userPost = filter_input(INPUT_POST, "user", FILTER_SANITIZE_STRIPPED);
+$passwdPost = filter_input(INPUT_POST, "senha", FILTER_SANITIZE_STRIPPED);
+$passEncoded = base64_encode($passwdPost);
 
-if (isset($_POST['user']) && (isset($_POST['senha']))) {
-    $conectado = $login->autentica($_POST['user'], base64_encode($_POST['senha']));
+$users = new User();
+$user = $users->find("user = :user AND password = :passwd", "user={$userPost}&passwd={$passEncoded}")->fetch();
 
-    if ($conectado) {
-        $_SESSION['logado'] = true;
-        header('Location: ./../home.php');
-    } else {
-        header('Location: ./../index.php');
-    }
+if ($user) {
+    $session->set("logado", true);
+    header('Location: ./../home.php');
+} else {
+    header('Location: ./../index.php');
 }

@@ -2,7 +2,7 @@
 <project version="4">
   <component name="WebServers">
     <option name="servers">
-      <webServer id="79ff1ac9-17f5-4171-81e2-e5726c1afaa5" name="ts" url="http://tsterapiaesaude.com.br">
+      <webServer id="d19f360c-8507-40fc-8fe1-a31b53f237f1" name="ts" url="http://tsterapiaesaude.com.br">
         <fileTransfer host="tsterapiaesaude.com.br" port="21">
           <advancedOptions>
             <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />

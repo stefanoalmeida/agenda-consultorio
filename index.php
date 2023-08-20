@@ -1,12 +1,3 @@
-<?php
-require_once __DIR__ . "/vendor/autoload.php";
-
-use Source\Core\Session;
-
-$session = new Session();
-$session->regenerate();
-
-?>
 <!doctype html>
 <html lang="pt-BR">
 <head>
@@ -18,12 +9,12 @@ $session->regenerate();
 
     <title>Login</title>
 </head>
-<body class="bg-white-100 flex flex-col items-center justify-center h-screen gap-8 relative">
+<body class="bg-white-100 flex flex-col items-center justify-center h-screen gap-8">
 
 <h2 class="font-bold text-purple-700 text-xl uppercase">Faça seu Login</h2>
 
 <div class="w-96">
-    <form action="./source/login_validate.php" method="POST" class="flex flex-col gap-4">
+    <form action="./source/login_validate.php" method="POST" class="flex flex-col gap-4 p-4">
 
         <input type="text" placeholder="Digite seu nome de usuário" name="user"
                class="p-2 bg-transparent border-2 border-gray-400 rounded-lg text-gray-500 focus:outline-purple-500"

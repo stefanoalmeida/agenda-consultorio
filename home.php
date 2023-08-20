@@ -23,9 +23,9 @@ $appointmentsFind = $appointment->find()->fetch(true);
     <script src="https://cdn.tailwindcss.com"></script>
     <title>TS-Agendamentos</title>
 </head>
-<body class="bg-white-100 overflow-y-hidden">
-<div class="grid grid-cols-3 items-center justify-center p-4 h-screen">
-    <div class="w-[24rem]">
+<body class="bg-white-100">
+<div class="flex flex-col gap-4 items-center justify-center p-4 h-fit md:grid md:grid-cols-3 md:h-screen">
+    <div class="w-fit md:w-[24rem]">
         <?php
         $postSearh = filter_input(INPUT_POST, "search");
         $sala = filter_input(INPUT_POST, "sala", FILTER_SANITIZE_STRIPPED);
@@ -94,7 +94,7 @@ $appointmentsFind = $appointment->find()->fetch(true);
         </form>
     </div>
     <div class="w-full col-span-2 flex flex-col gap-4">
-        <div class="flex items-center gap-4">
+        <div class="flex flex-col md:flex-row items-center gap-4">
             <p class="font-bold text-purple-700 text-md">
                 Agendamentos: <?= date("d/m/Y", strtotime($day)) ?>
             </p>
@@ -131,7 +131,7 @@ $appointmentsFind = $appointment->find()->fetch(true);
                 Sair
             </a>
         </div>
-        <div class="overflow-y-auto overflow-x-hidden h-[36rem]">
+        <div class="overflow-y-auto h-[20rem] md:h-[36rem]">
             <table class="w-full border-collapse min-w-max text-center mr-4 relative">
                 <thead class="bg-purple-700 text-white">
                 <tr>
