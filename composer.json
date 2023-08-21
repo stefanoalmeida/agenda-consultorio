@@ -20,6 +20,7 @@
   "require": {
     "coffeecode/datalayer": "1.1.8",
     "ext-json": "*",
-    "ext-pdo": "*"
+    "ext-pdo": "*",
+    "ramsey/uuid": "4.2.3"
   }
 }

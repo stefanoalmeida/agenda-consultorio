@@ -1,9 +1,8 @@
 <?php
-require_once __DIR__ . "/vendor/autoload.php";
 
-$conn =\CoffeeCode\DataLayer\Connect::getInstance();
-$query = $conn->query("SELECT * FROM profissionais");
-$res = $query->fetchAll();
+$conn = new PDO('mysql:host=localhost;dbname=ts_plataforma', 'root', '');
+$clientsAll = $conn->query("SELECT * FROM clientes");
+$clientsAll->fetchAll();
 
-echo json_encode($res);
+echo json_encode($clientsAll);
 ?>
