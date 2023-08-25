@@ -16,6 +16,6 @@ $result = $appointment->findById($id);
 $result->destroy();
 
 $session->set("success", "Agendamento excluído com sucesso!");
-header("Location: ./../../new_appointment.php");
+header("Location: ./../../home.php");
 
 

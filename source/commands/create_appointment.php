@@ -21,7 +21,7 @@ $conn = Connect::getInstance();
 $query = $conn->query("SELECT * FROM agendamentos WHERE 
                                id_profissional = '{$appointment->id_profissional}' AND
                                data_agendamento = '{$appointment->data_agendamento}' AND
-                               horario = '{$appointment->horario}'");
+                               horario = '{$appointment->horario}' AND status = 'Confirmado'");
 $result = $query->rowCount();
 
 $q = $conn->query("SELECT p.nome FROM agendamentos 

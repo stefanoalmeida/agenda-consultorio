@@ -31,17 +31,15 @@ $appointmentsFind = $appointment->find()->fetch(true);
         $sala = filter_input(INPUT_POST, "sala", FILTER_SANITIZE_STRIPPED);
         $profissional = filter_input(INPUT_POST, "profissional", FILTER_SANITIZE_STRIPPED);
 
-        $day = $postSearh ? $postSearh : date("Y-m-d");
-
-        $_SESSION["data_agendamento"] = $day;
+        $day = $postSearh ? : date("Y-m-d");
 
         $conn = Connect::getInstance();
         if ($postSearh and $sala) {
-            $query = $conn->query("SELECT * FROM agendamentos WHERE data_agendamento = '{$day}' 
+            $query = $conn->query("SELECT * FROM agendamentos WHERE data_agendamento = '{$postSearh}' 
                              AND sala = '{$sala}' ORDER BY horario ASC");
             $res = $query->fetchAll();
         } elseif ($postSearh and $profissional) {
-            $query = $conn->query("SELECT * FROM agendamentos WHERE data_agendamento = '{$day}' 
+            $query = $conn->query("SELECT * FROM agendamentos WHERE data_agendamento = '{$postSearh}' 
                              AND id_profissional = '{$profissional}' ORDER BY horario ASC");
             $res = $query->fetchAll();
         } else {
@@ -51,12 +49,18 @@ $appointmentsFind = $appointment->find()->fetch(true);
         }
         ?>
         <form action="" class="flex flex-col items-center justify-center gap-4 w-82" method="POST">
+            <?php if (isset($_SESSION["error"])) : ?>
+                <span class="rounded-md bg-transparent border-2 border-red-500 p-2 text-red-500 font-medium text-md"><?= $_SESSION["error"] ?></span>
+                <?php unset($_SESSION["error"]) ?>
+            <?php elseif (isset($_SESSION["success"])) : ?>
+                <span class="rounded-md bg-transparent border-2 border-green-500 p-2 text-green-500 font-medium text-md"><?= $_SESSION["success"] ?></span>
+                <?php unset($_SESSION["success"]); endif; ?>
             <input
                     class="bg-transparent text-gray-500 border border-gray-400 rounded-lg w-full p-2 focus:outline-purple-900"
                     type="date"
                     name="search"
                     id="data-agendamento"
-                    value=<?= $_SESSION["data_agendamento"] ?>
+                    value=<?= $postSearh ?>
             >
             <select name="sala" id=""
                     class="w-full p-2 bg-transparent border-2 border-gray-400 rounded-lg text-gray-500 focus:outline-purple-700">

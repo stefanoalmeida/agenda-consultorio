@@ -2,6 +2,7 @@
 require_once __DIR__ . "/vendor/autoload.php";
 
 use Source\Core\Session;
+use Source\Models\Agendamento;
 use Source\Models\Profissional;
 
 $session = new Session();
@@ -10,7 +11,7 @@ $session->regenerate();
 
 $id = filter_input(INPUT_GET, 'id', FILTER_DEFAULT);
 
-$appointment = new \Source\Models\Agendamento();
+$appointment = new Agendamento();
 $result = $appointment->findById($id);
 
 $professional = new Profissional();
@@ -85,7 +86,7 @@ $professionalFind = $professional->find("status = :st", "st=Ativo")->fetch(true)
                 class="p-2 bg-transparent border-2 border-gray-400 rounded-lg text-gray-500 focus:outline-purple-500"
                 required>
             <option value="<?= $result->status ?>" selected><?= $result->status ?></option>
-            <option value="Con requiredfirmado">Confirmado</option>
+            <option value="Confirmado">Confirmado</option>
             <option value="Presença">Presença</option>
             <option value="Cancelado Profissional">Cancelado Profissional</option>
             <option value="Cancelado Paciente">Cancelado Paciente</option>

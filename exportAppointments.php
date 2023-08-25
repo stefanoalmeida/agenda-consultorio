@@ -21,6 +21,13 @@ $session->regenerate();
 </head>
 <body class="bg-white-100 flex flex-col items-center justify-center h-screen gap-6 relative">
 
+<script>
+    function mostrarMensagem() {
+        const text = document.getElementById('text')
+        text.innerHTML = 'Escolha apenas um filtro (sala ou profissional).'
+    }
+</script>
+
 <h2 class="font-bold text-purple-700 text-xl uppercase">Exportar agendamentos</h2>
 
 <?php if (isset($_SESSION["error"])) : ?>
@@ -28,58 +35,61 @@ $session->regenerate();
 <?php endif;
 unset($_SESSION["error"]) ?>
 
-<div class="w-96">
-    <form action="./relAppointments.php" method="POST" class="flex flex-col gap-3 p-4">
-        <div class="flex flex-col gap-1">
-            <label for="" class="text-gray-500">Data Inicial:</label>
-            <input type="date" name="data_inicial"
-                   class="p-2 bg-transparent border-2 border-gray-400 rounded-lg text-gray-500 focus:outline-purple-500"
+<div class="flex items-center">
+    <div class="w-96">
+        <form action="./relAppointments.php" method="POST" class="flex flex-col gap-3 p-4">
+            <div class="flex flex-col gap-1">
+                <label for="" class="text-gray-500">Data Inicial:</label>
+                <input type="date" name="data_inicial"
+                       class="p-2 bg-transparent border-2 border-gray-400 rounded-lg text-gray-500 focus:outline-purple-500"
+                >
+            </div>
+
+            <div class="flex flex-col gap-1">
+                <label for="" class="text-gray-500">Data Final:</label>
+                <input type="date" name="data_final"
+                       class="p-2 bg-transparent border-2 border-gray-400 rounded-lg text-gray-500 focus:outline-purple-500"
+                >
+            </div>
+            <strong id="text" class="text-sm text-purple-700 text-center"></strong>
+            <div class="flex flex-col gap-1" onmouseenter="mostrarMensagem()">
+                <select name="sala" id=""
+                        class="w-full p-2 bg-transparent border-2 border-gray-400 rounded-lg text-gray-500
+                        focus:outline-purple-700"
+                >
+                    <option value="" selected>Selecione a sala</option>
+                    <option value="Sala 01">Sala 01</option>
+                    <option value="Sala 02">Sala 02</option>
+                    <option value="Sala 03">Sala 03</option>
+                    <option value="Sala 04">Sala 04</option>
+                    <option value="Sala 05">Sala 05</option>
+                    <option value="Sala 06">Sala 06</option>
+                </select>
+            </div>
+
+            <div class="flex flex-col gap-1">
+                <select name="profissional" id=""
+                        class="w-full p-2 bg-transparent border-2 border-gray-400 rounded-lg text-gray-500 focus:outline-purple-700">
+                    <?php
+                    $professionals = new \Source\Models\Profissional();
+                    $professionalFind = $professionals->find()->fetch(true);
+                    ?>
+                    <option value="" selected>Selecione um profissional</option>
+                    <?php foreach ($professionalFind as $prof) : ?>
+                        <option value="<?= $prof->id ?>"><?= $prof->nome ?></option>
+                    <?php endforeach; ?>
+                </select>
+            </div>
+
+            <button
+                    class="rounded-lg bg-purple-700 text-white font-bold p-2 shadow-lg hover:shadow-purple-400/70 hover:border-none
+                     hover:bg-purple-600"
             >
-        </div>
+                Exportar
+            </button>
+        </form>
+    </div>
 
-        <div class="flex flex-col gap-1">
-            <label for="" class="text-gray-500">Data Final:</label>
-            <input type="date" name="data_final"
-                   class="p-2 bg-transparent border-2 border-gray-400 rounded-lg text-gray-500 focus:outline-purple-500"
-            >
-        </div>
-
-        <div class="flex flex-col gap-1">
-            <select name="sala" id=""
-                    class="w-full p-2 bg-transparent border-2 border-gray-400 rounded-lg text-gray-500
-                    focus:outline-purple-700"
-            >
-                <option value="" selected>Selecione a sala</option>
-                <option value="Sala 01">Sala 01</option>
-                <option value="Sala 02">Sala 02</option>
-                <option value="Sala 03">Sala 03</option>
-                <option value="Sala 04">Sala 04</option>
-                <option value="Sala 05">Sala 05</option>
-                <option value="Sala 06">Sala 06</option>
-            </select>
-        </div>
-
-        <div class="flex flex-col gap-1">
-            <select name="profissional" id=""
-                    class="w-full p-2 bg-transparent border-2 border-gray-400 rounded-lg text-gray-500 focus:outline-purple-700">
-                <?php
-                $professionals = new \Source\Models\Profissional();
-                $professionalFind = $professionals->find()->fetch(true);
-                ?>
-                <option value="" selected>Selecione um profissional</option>
-                <?php foreach ($professionalFind as $prof) : ?>
-                    <option value="<?= $prof->id ?>"><?= $prof->nome ?></option>
-                <?php endforeach; ?>
-            </select>
-        </div>
-
-        <button
-                class="rounded-lg bg-purple-700 text-white font-bold p-2 shadow-lg hover:shadow-purple-400/70 hover:border-none
-                 hover:bg-purple-600"
-        >
-            Exportar
-        </button>
-    </form>
 </div>
 <a
         href="home.php"
