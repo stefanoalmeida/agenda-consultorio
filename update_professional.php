@@ -33,7 +33,7 @@ $res = $professional->findById($id);
     <span class="rounded-md bg-transparent border-2 border-green-500 p-2 text-green-500 font-medium text-md"><?= $_SESSION["success"] ?></span>
     <?php unset($_SESSION["success"]); endif; ?>
 
-<div class="w-96">
+<div class="w-fit">
     <form action="./source/commands/update_professional.php" method="POST" class="flex flex-col gap-4 p-4">
         <input type="hidden" name="id" value="<?= $res->id ?>">
         <input type="text" placeholder="Digite o nome do profissional" name="nome"
@@ -66,10 +66,11 @@ $res = $professional->findById($id);
             </button>
             <a
                     href="./source/commands/delete_professional.php?id=<?= $res->id ?>"
-                    class="w-fit rounded-lg bg-transparent text-red-500 border-2 border-red-200 font-bold p-2 shadow-lg hover:shadow-red-400/70
+                    class="w-fit flex items-center gap-1 rounded-lg bg-transparent text-red-500 border-2 border-red-200 font-bold p-2 shadow-lg hover:shadow-red-400/70
                         hover:border-none hover:bg-red-500 hover:text-white"
             >
                 Deletar agendamento
+                <ion-icon name="trash-outline" class="text-lg"></ion-icon>
             </a>
 
         </div>
@@ -77,10 +78,13 @@ $res = $professional->findById($id);
 </div>
 <a
         href="./new_professional.php"
-        class="p-2 bg-transparent text-purple-700 font-bold rounded-lg shadow-lg hover:shadow-purple-500/70
+        class="flex items-center gap-1 p-2 bg-transparent text-purple-700 font-bold rounded-lg shadow-lg hover:shadow-purple-500/70
         hover:border-none hover:bg-purple-700 hover:text-white fixed right-4 top-4"
 >
     Voltar para a listagem de profissionais
+    <ion-icon name="return-down-back-outline" class="text-lg"></ion-icon>
 </a>
 </body>
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </html>

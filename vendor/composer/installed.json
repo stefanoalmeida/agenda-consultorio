@@ -120,6 +120,54 @@
             "install-path": "../coffeecode/datalayer"
         },
         {
+            "name": "fortawesome/font-awesome",
+            "version": "6.4.2",
+            "version_normalized": "6.4.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/FortAwesome/Font-Awesome.git",
+                "reference": "f0c25837a3fe0e03783b939559e088abcbfb3c4b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/FortAwesome/Font-Awesome/zipball/f0c25837a3fe0e03783b939559e088abcbfb3c4b",
+                "reference": "f0c25837a3fe0e03783b939559e088abcbfb3c4b",
+                "shasum": ""
+            },
+            "time": "2023-08-02T20:27:06+00:00",
+            "type": "library",
+            "installation-source": "dist",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "CC-BY-4.0",
+                "OFL-1.1",
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "The Font Awesome Team",
+                    "homepage": "https://github.com/orgs/FortAwesome/people"
+                }
+            ],
+            "description": "The iconic font, CSS, and SVG framework",
+            "homepage": "https://fontawesome.com",
+            "keywords": [
+                "FontAwesome",
+                "awesome",
+                "bootstrap",
+                "font",
+                "icon",
+                "svg"
+            ],
+            "support": {
+                "docs": "http://fontawesome.com/docs",
+                "email": "hello@fontawesome.com",
+                "issues": "https://github.com/FortAwesome/Font-Awesome/issues",
+                "source": "https://github.com/FortAwesome/Font-Awesome"
+            },
+            "install-path": "../fortawesome/font-awesome"
+        },
+        {
             "name": "ramsey/collection",
             "version": "1.2.2",
             "version_normalized": "1.2.2.0",

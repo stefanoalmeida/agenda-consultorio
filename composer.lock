@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c9e32dcf5c2228ff4d0b761adefe72c2",
+    "content-hash": "2ecd637061ea2fa414f748678ed4b4a7",
     "packages": [
         {
             "name": "brick/math",
@@ -118,6 +118,51 @@
                 "source": "https://github.com/robsonvleite/datalayer/tree/1.1.8"
             },
             "time": "2021-03-21T14:00:57+00:00"
+        },
+        {
+            "name": "fortawesome/font-awesome",
+            "version": "6.4.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/FortAwesome/Font-Awesome.git",
+                "reference": "f0c25837a3fe0e03783b939559e088abcbfb3c4b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/FortAwesome/Font-Awesome/zipball/f0c25837a3fe0e03783b939559e088abcbfb3c4b",
+                "reference": "f0c25837a3fe0e03783b939559e088abcbfb3c4b",
+                "shasum": ""
+            },
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "CC-BY-4.0",
+                "OFL-1.1",
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "The Font Awesome Team",
+                    "homepage": "https://github.com/orgs/FortAwesome/people"
+                }
+            ],
+            "description": "The iconic font, CSS, and SVG framework",
+            "homepage": "https://fontawesome.com",
+            "keywords": [
+                "FontAwesome",
+                "awesome",
+                "bootstrap",
+                "font",
+                "icon",
+                "svg"
+            ],
+            "support": {
+                "docs": "http://fontawesome.com/docs",
+                "email": "hello@fontawesome.com",
+                "issues": "https://github.com/FortAwesome/Font-Awesome/issues",
+                "source": "https://github.com/FortAwesome/Font-Awesome"
+            },
+            "time": "2023-08-02T20:27:06+00:00"
         },
         {
             "name": "ramsey/collection",

@@ -93,10 +93,13 @@ unset($_SESSION["error"]) ?>
 </div>
 <a
         href="home.php"
-        class="p-2 bg-transparent text-purple-700 font-bold rounded-lg shadow-lg hover:shadow-purple-500/70
+        class="flex items-center gap-1 p-2 bg-transparent text-purple-700 font-bold rounded-lg shadow-lg hover:shadow-purple-500/70
         hover:border-none hover:bg-purple-700 hover:text-white fixed right-4 top-4"
 >
     Voltar para a página inicial
+    <ion-icon name="return-down-back-outline" class="text-lg"></ion-icon>
 </a>
 </body>
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </html>

@@ -21,6 +21,7 @@
     "coffeecode/datalayer": "1.1.8",
     "ext-json": "*",
     "ext-pdo": "*",
-    "ramsey/uuid": "4.2.3"
+    "ramsey/uuid": "4.2.3",
+    "fortawesome/font-awesome": "6.4.2"
   }
 }

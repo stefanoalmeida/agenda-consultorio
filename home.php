@@ -48,7 +48,7 @@ $appointmentsFind = $appointment->find()->fetch(true);
             $res = $query->fetchAll();
         }
         ?>
-        <form action="" class="flex flex-col items-center justify-center gap-4 w-82" method="POST">
+        <form action="" class="flex flex-col items-center justify-center gap-4" method="POST">
             <?php if (isset($_SESSION["error"])) : ?>
                 <span class="rounded-md bg-transparent border-2 border-red-500 p-2 text-red-500 font-medium text-md"><?= $_SESSION["error"] ?></span>
                 <?php unset($_SESSION["error"]) ?>
@@ -99,47 +99,50 @@ $appointmentsFind = $appointment->find()->fetch(true);
     </div>
     <div class="w-full col-span-2 flex flex-col gap-4">
         <div class="flex flex-col md:flex-row items-center gap-4">
-            <p class="font-bold text-purple-700 text-md">
-                Agendamentos: <?= date("d/m/Y", strtotime($day)) ?>
+            <p class="flex items-center gap-2 font-bold text-purple-700 text-md">
+                <ion-icon name="calendar-outline" class="text-2xl"></ion-icon> <?= date("d/m/Y", strtotime($day)) ?>
             </p>
             <a
                     href="./new_appointment.php"
                     title="Novo agendamento"
-                    class="rounded-lg bg-transparent border border-purple-300 text-purple-700 font-bold p-2 shadow-lg
+                    class="w-[17rem] md:w-fit flex items-center justify-center gap-1 rounded-lg bg-transparent border border-purple-300 text-purple-700 font-bold p-2 shadow-lg
                     hover:shadow-purple-400/70 hover:border-none hover:bg-purple-700 hover:text-white cursor-pointer"
             >
                 Novo agendamento
+                <ion-icon name="create-outline" class="text-lg"></ion-icon>
             </a>
             <a
                     href="new_professional.php"
                     title="Cadastrar profissional"
-                    class="rounded-lg bg-transparent border border-purple-300 text-purple-700 font-bold p-2 shadow-lg
+                    class="w-[17rem] md:w-fit flex items-center justify-center gap-1 rounded-lg bg-transparent border border-purple-300 text-purple-700 font-bold p-2 shadow-lg
                     hover:shadow-purple-400/70 hover:border-none hover:bg-purple-700 hover:text-white cursor-pointer"
             >
                 Novo profissional
+                <ion-icon name="create-outline" class="text-lg"></ion-icon>
             </a>
             <a
                     href="./exportAppointments.php"
                     title="Exportar agendamentos"
-                    class="rounded-lg bg-transparent border border-purple-300 text-purple-700 font-bold p-2 shadow-lg
+                    class="w-[17rem] md:w-fit flex items-center justify-center gap-1 rounded-lg bg-transparent border border-purple-300 text-purple-700 font-bold p-2 shadow-lg
                     hover:shadow-purple-400/70 hover:border-none hover:bg-purple-700 hover:text-white cursor-pointer"
             >
                 Exportar agendamentos
+                <ion-icon name="download-outline" class="text-lg"></ion-icon>
             </a>
             <a
                     href="./logout.php"
                     title="Sair"
-                    class="rounded-lg bg-transparent border border-purple-300 text-purple-700 font-bold p-2 shadow-lg
+                    class="flex items-center gap-1 rounded-lg bg-transparent border border-purple-300 text-purple-700 font-bold p-2 shadow-lg
                     hover:shadow-purple-400/70 hover:border-none hover:bg-yellow-500 hover:text-white cursor-pointer"
             >
-                Sair
+                <ion-icon name="log-out-outline" class="text-xl font-bold"></ion-icon>
             </a>
         </div>
         <div class="overflow-y-auto h-[20rem] md:h-[36rem]">
             <table class="w-full border-collapse min-w-max text-center mr-4 relative">
                 <thead class="bg-purple-700 text-white">
                 <tr>
-                    <th class="p-2 rounded-tl-lg">Horário</th>
+                    <th class="p-3 rounded-tl-lg">Horário</th>
                     <th>Sala</th>
                     <th>Paciente</th>
                     <th>Profissional</th>
@@ -183,4 +186,6 @@ $appointmentsFind = $appointment->find()->fetch(true);
     </div>
 </div>
 </body>
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </html>
