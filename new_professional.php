@@ -83,8 +83,9 @@ $res = $professional->fetch(true);
                     <tr class="bg-transparent border-t-4 border-purple-200 text-gray-600"">
                     <td title="Editar profissional">
                         <a href="update_professional.php?id=<?= $item->id ?>"
-                           class="hover:text-purple-900 hover:font-bold">
+                           class="flex items-center justify-center gap-1 hover:text-purple-900 hover:font-bold">
                             <?= $item->nome ?>
+                            <ion-icon name="create-outline" class="text-lg"></ion-icon>
                         </a>
                     </td>
                     <td class="p-2"><?= $item->especialidade ?></td>

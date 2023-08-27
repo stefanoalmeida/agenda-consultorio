@@ -25,7 +25,7 @@ $appointmentsFind = $appointment->find()->fetch(true);
 </head>
 <body class="bg-white-100">
 <div class="flex flex-col gap-4 items-center justify-center p-4 h-fit md:grid md:grid-cols-3 md:h-screen">
-    <div class="w-fit md:w-[24rem]">
+    <div class="w-fit md:w-[24rem] md:flex md:flex-col md:gap-6 md:h-[38rem]">
         <?php
         $postSearh = filter_input(INPUT_POST, "search");
         $sala = filter_input(INPUT_POST, "sala", FILTER_SANITIZE_STRIPPED);
@@ -48,6 +48,13 @@ $appointmentsFind = $appointment->find()->fetch(true);
             $res = $query->fetchAll();
         }
         ?>
+        <div class="flex justify-center mb-8 items-center md:justify-start gap-2">
+            <img class="w-14 h-14 md:w-16 md:h-16 rounded-lg border border-purple-500 object-contain p-1" src="./source/assets/img/logo-ts.svg" alt="">
+            <div class="flex flex-col items-center">
+                <strong class="text-gray-500 text-sm md:text-base">Espaço T&S</strong>
+                <span class="text-gray-400 font-bold text-xs">Agenda</span>
+            </div>
+        </div>
         <form action="" class="flex flex-col items-center justify-center gap-4" method="POST">
             <?php if (isset($_SESSION["error"])) : ?>
                 <span class="rounded-md bg-transparent border-2 border-red-500 p-2 text-red-500 font-medium text-md"><?= $_SESSION["error"] ?></span>
@@ -100,7 +107,7 @@ $appointmentsFind = $appointment->find()->fetch(true);
     <div class="w-full col-span-2 flex flex-col gap-4">
         <div class="flex flex-col md:flex-row items-center gap-4">
             <p class="flex items-center gap-2 font-bold text-purple-700 text-md">
-                <ion-icon name="calendar-outline" class="text-2xl"></ion-icon> <?= date("d/m/Y", strtotime($day)) ?>
+                <ion-icon name="calendar-number-outline" class="text-2xl"></ion-icon> <?= date("d/m/Y", strtotime($day)) ?>
             </p>
             <a
                     href="./new_appointment.php"
@@ -109,16 +116,16 @@ $appointmentsFind = $appointment->find()->fetch(true);
                     hover:shadow-purple-400/70 hover:border-none hover:bg-purple-700 hover:text-white cursor-pointer"
             >
                 Novo agendamento
-                <ion-icon name="create-outline" class="text-lg"></ion-icon>
+                <ion-icon name="today-outline" class="text-lg"></ion-icon>
             </a>
             <a
                     href="new_professional.php"
-                    title="Cadastrar profissional"
+                    title="Novo profissional"
                     class="w-[17rem] md:w-fit flex items-center justify-center gap-1 rounded-lg bg-transparent border border-purple-300 text-purple-700 font-bold p-2 shadow-lg
                     hover:shadow-purple-400/70 hover:border-none hover:bg-purple-700 hover:text-white cursor-pointer"
             >
                 Novo profissional
-                <ion-icon name="create-outline" class="text-lg"></ion-icon>
+                <ion-icon name="person-add-outline" class="text-lg"></ion-icon>
             </a>
             <a
                     href="./exportAppointments.php"
@@ -159,8 +166,9 @@ $appointmentsFind = $appointment->find()->fetch(true);
                         <td class="p-2"><?= $item->sala ?></td>
                         <td title="Editar agendamento">
                             <a href="update-appointment.php?id=<?= $item->id ?>"
-                               class="hover:text-purple-900 hover:font-bold">
+                               class="flex items-center justify-center gap-1 hover:text-purple-900 hover:font-bold">
                                 <?= $item->nome ?>
+                                <ion-icon name="create-outline" class="text-lg"></ion-icon>
                             </a>
                         </td>
                         <?php
